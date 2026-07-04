@@ -1,0 +1,31 @@
+{
+  "leads": [
+    {
+      "id": "1",
+      "name": "Rahul Sharma",
+      "mobile": "9876543210",
+      "email": "rahul@gmail.com",
+      "status": "New",
+      "employee": "John",
+      "createdDate": "2026-07-04",
+      "address": "Chennai",
+      "course": "Java Full Stack",
+      "source": "Website",
+      "notes": []
+    },
+    {
+      "id": "2",
+      "name": "Priya",
+      "mobile": "9876501234",
+      "email": "priya@gmail.com",
+      "status": "Contacted",
+      "employee": "David",
+      "createdDate": "2026-07-03",
+      "address": "Coimbatore",
+      "course": "Python",
+      "source": "Facebook",
+      "notes": []
+    }
+  ]
+  
+}

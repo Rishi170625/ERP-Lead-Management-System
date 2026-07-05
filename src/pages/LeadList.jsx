@@ -23,22 +23,26 @@ function LeadList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  // Fetch Leads
   const fetchLeads = async () => {
     try {
       setLoading(true);
+      console.log("Fetching leads...");
 
       const response = await api.get("/leads");
+
+      console.log("Response Status:", response.status);
+      console.log("Response Data:", response.data);
 
       setLeads(response.data);
       setFilteredLeads(response.data);
 
       setError(false);
     } catch (err) {
-      console.error(err);
+      console.error("API Error:", err);
       setError(true);
     } finally {
       setLoading(false);
+      console.log("Loading Finished");
     }
   };
 
@@ -46,10 +50,13 @@ function LeadList() {
     fetchLeads();
   }, []);
 
-  // Pagination
+  console.log("Loading:", loading);
+  console.log("Error:", error);
+  console.log("Leads:", leads);
+  console.log("Filtered Leads:", filteredLeads);
+
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-
   const currentLeads = filteredLeads.slice(firstIndex, lastIndex);
 
   const totalPages = Math.max(
@@ -59,15 +66,12 @@ function LeadList() {
 
   return (
     <div className="d-flex">
-
       <Sidebar />
 
       <div className="flex-grow-1 bg-light">
-
         <Navbar />
 
         <div className="container mt-4">
-
           <h3 className="mb-4">Lead Management</h3>
 
           <SearchBar
@@ -107,17 +111,10 @@ function LeadList() {
             lead={selectedLead}
             onClose={() => setSelectedLead(null)}
           />
-          <LeadModal
-            lead={selectedLead}
-            onClose={() => setSelectedLead(null)}
-          />
 
-<Footer />
-
+          <Footer />
         </div>
-
       </div>
-
     </div>
   );
 }
